@@ -1,0 +1,7 @@
+<app-new-product (addProduct)="AddProduct($event)"></app-new-product>
+
+<app-product-list
+  [products]="products"
+  (deleteProduct)="DeleteProduct($event)"
+  (updateProduct)="UpdateProduct($event)"
+></app-product-list>

@@ -1,0 +1,31 @@
+<ng-template [ngIf]="!editStatus" [ngIfElse]="edit">
+  <td>{{ product.id }}</td>
+  <td>{{ product.name }}</td>
+  <td>{{ product.price | currency }}</td>
+  <td>{{ product.stock }}</td>
+  <td>
+    <button (click)="editProduct()" class="btn btn-primary">Edit</button> |
+    <button (click)="DeleteProduct()" class="btn btn-danger">Delete</button>
+  </td>
+</ng-template>
+
+<ng-template #edit>
+  <td>{{ product.id }}</td>
+  <td>
+    <input type="text" [(ngModel)]="tempProduct.name" />
+    <ul>
+      <li class="text-wrap" *ngFor="let error of errors">
+        {{ error.type === "name" ? error.message : "" }}
+      </li>
+    </ul>
+  </td>
+  <td><input min="0.01" type="number" [(ngModel)]="tempProduct.price" /></td>
+  <td><input min="0" type="number" [(ngModel)]="tempProduct.stock" /></td>
+  <td>
+    <button (click)="editStatus = false; errors = []" class="btn btn-secondary">
+      Cancel
+    </button>
+    |
+    <button (click)="Save()" class="btn btn-primary">Save</button>
+  </td>
+</ng-template>

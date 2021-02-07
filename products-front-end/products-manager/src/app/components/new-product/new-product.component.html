@@ -1,0 +1,46 @@
+<form
+  [formGroup]="NewProductForm"
+  (ngSubmit)="AddProduct(NewProductForm.value)"
+  class="pt-5"
+>
+  <div class="row">
+    <div class="col">
+      <label for="name" hidden>Name:</label>
+      <input
+        class="form-control"
+        formControlName="name"
+        placeholder="Product Name..."
+        type="text"
+        id="name"
+      />
+    </div>
+    <div class="col">
+      <label for="price" hidden>Price:</label>
+      <input
+        class="form-control"
+        formControlName="price"
+        placeholder="Price - Min 0.01$"
+        value="10"
+        min="0.01"
+        type="number"
+        id="price"
+      />
+    </div>
+    <div class="col">
+      <label for="stock" hidden>In Stock:</label>
+      <input
+        class="form-control"
+        formControlName="stock"
+        type="number"
+        placeholder="Price - Min 0"
+        min="0"
+        id="stock"
+      />
+    </div>
+    <div class="col">
+      <button [disabled]="!NewProductForm.valid" class="m-1 btn btn-success">
+        New
+      </button>
+    </div>
+  </div>
+</form>
