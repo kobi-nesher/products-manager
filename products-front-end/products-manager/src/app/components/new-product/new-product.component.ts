@@ -1,5 +1,4 @@
 import { IProduct } from './../../interfaces/iproduct';
-import { ProductService } from './../../services/product.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
@@ -30,18 +29,14 @@ export class NewProductComponent implements OnInit {
       price: new FormControl('', [Validators.required, Validators.min(0.01)]),
       stock: new FormControl('', [Validators.required, Validators.min(0)]),
     });
-    this.NewProductForm.valueChanges.subscribe((value) => {
-      // console.log(value);
-    });
+    this.NewProductForm.valueChanges.subscribe();
   }
 
-  AddProduct(product: IProduct) {
+  AddProduct() {
     if (this.NewProductForm.valid) {
       this.newProduct = this.NewProductForm.getRawValue();
       this.addProduct.emit(this.newProduct);
-      // this._productsService
-      //   .createProduct(product)
-      //   .subscribe(() => this.GetAllProducts());
+      this.NewProductForm.patchValue({ name: '', price: null, stock: null });
     }
   }
 }

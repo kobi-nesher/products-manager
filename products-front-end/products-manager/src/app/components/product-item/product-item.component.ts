@@ -1,12 +1,6 @@
 import { IError } from './../../interfaces/ierror';
 import { IProduct } from './../../interfaces/iproduct';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 
 @Component({
   selector: '[product-item]',
@@ -18,15 +12,14 @@ export class ProductItemComponent implements OnInit {
   @Output('deleteProduct') deleteProduct = new EventEmitter<void>();
   @Output('updateProduct') updateProduct = new EventEmitter<IProduct>();
   editStatus: boolean = false;
-  valid: boolean = true;
   tempProduct: IProduct;
   errors: IError[] = [];
 
   constructor() {}
 
   editProduct() {
-    this.editStatus = true;
     this.tempProduct = { ...this.product };
+    this.editStatus = true;
   }
 
   isFormValid() {
