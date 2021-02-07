@@ -12,7 +12,6 @@ export class ProductContainerComponent implements OnInit {
   public products: IProduct[] = [];
 
   AddProduct(product: IProduct) {
-    console.log(product);
     this._productsService.createProduct(product).subscribe(() => {
       this.GetAllProducts();
       Swal.fire({
@@ -26,7 +25,6 @@ export class ProductContainerComponent implements OnInit {
   }
 
   GetAllProducts() {
-    console.log('container');
     this._productsService.getAllProducts().subscribe((resp: any) => {
       this.products = resp.data;
     });

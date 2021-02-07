@@ -53,7 +53,6 @@ export class ProductItemComponent implements OnInit {
 
   Save() {
     if (this.isFormValid()) {
-      console.log('valid');
       this.updateProduct.emit(this.tempProduct);
     }
   }

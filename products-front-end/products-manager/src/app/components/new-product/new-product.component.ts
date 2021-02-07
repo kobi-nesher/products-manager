@@ -29,7 +29,6 @@ export class NewProductComponent implements OnInit {
       price: new FormControl('', [Validators.required, Validators.min(0.01)]),
       stock: new FormControl('', [Validators.required, Validators.min(0)]),
     });
-    this.NewProductForm.valueChanges.subscribe();
   }
 
   AddProduct() {
